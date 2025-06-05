@@ -126,7 +126,7 @@ By completing this lab, you will gain hands-on experience in deploying AI soluti
       - `Content-Type`: `application/json`
       - `api-key`: *(your Azure OpenAI key)*
 
-11. **Body**:
+    - **Body**:
 
     ```json
     {
@@ -145,7 +145,7 @@ By completing this lab, you will gain hands-on experience in deploying AI soluti
     }
     ```
 
-12.  Add a new **Parse JSON** node:
+11. Add a new **Parse JSON** node:
     - **Content**: Select `Body` from HTTP response
     - **Schema**:
     
@@ -163,9 +163,9 @@ By completing this lab, you will gain hands-on experience in deploying AI soluti
     }
     ```
 
-13.  Add a final node: **Send an Email (V2)**
+12. Add a final node: **Send an Email (V2)**
 
-14.  Configure the email:
+13. Configure the email:
     - **To**: your email address
     - **Subject**: your subject
     - **Body**:
@@ -174,13 +174,13 @@ By completing this lab, you will gain hands-on experience in deploying AI soluti
     outputs('Parse_JSON')?['body']?['choices'][0]['message']['content']
     ```
 
-15. Click **Save**
+14. Click **Save**
 
-16. Click **Test** → **Test Flow Manually**
+15. Click **Test** → **Test Flow Manually**
 
-17. Grant permission to Outlook when prompted
+16. Grant permission to Outlook when prompted
 
-18. Enter your query related to the PDF uploaded to your Azure AI Foundry agent
+17. Enter your query related to the PDF uploaded to your Azure AI Foundry agent
 
-19. You should receive an email with the agent’s response  
+18. You should receive an email with the agent’s response  
     - If not, go to **Flow Runs** to troubleshoot

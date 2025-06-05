@@ -84,12 +84,12 @@ By completing this lab, you will gain hands-on experience in deploying AI soluti
    - Click **Add**
 
 10. Select **Files** to upload the [cloth mask vs medical mask.pdf](cloth-mask-vs-medical-mask.pdf?raw=true) PDF.
-   - Upload and save
-   - The file is now added to the vector store
+    - Upload and save
+    - The file is now added to the vector store
 
 11. Test your model:
-   - Click **Try in Playground**
-   - Enter a query in the input box
+    - Click **Try in Playground**
+    - Enter a query in the input box
 
 > Examples:
 > 

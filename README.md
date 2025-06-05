@@ -22,20 +22,18 @@ By completing this lab, you will gain hands-on experience in deploying AI soluti
 
 1. Go to [https://portal.azure.com/](https://portal.azure.com/)
 
-2. Click on **Azure AI Foundry** and you should see a screen.
+2. In the top search bar, type "AI Foundry" and select **Azure AI Foundry**.
 
-3. In the left navigation, click on **Use with AI Foundry**
+    ![The AI Foundry search results are displayed.](media/search-ai-foundry.png)
 
-4. Click on **AI Hubs**
+3. In the left navigation, expand the **Use with AI Foundry** left menu item, select **AI Hubs**, select **Create**, then **Hub**.
 
-5. Create a Hub:
-   - Click **Create**
-   - Select **Hub**
+    ![Create AI Hub option.](media/create-ai-hub.png)
 
-6. Create a new Resource Group:
+4. Create a new Resource Group:
    - Use the format `<yourname>-rg`
 
-7. Add the Hub name:
+5. Add the Hub name:
    - Use the format `<yourname>-hub`
    - You can add a friendly name
    - Do not change any default values

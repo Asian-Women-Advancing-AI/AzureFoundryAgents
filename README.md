@@ -63,23 +63,23 @@ By completing this lab, you will gain hands-on experience in deploying AI soluti
    - Name your project `<yourname>-project`
    - Click **Create**
 
-3.  You will see your project dashboard
+3. You will see your project dashboard
 
-4.  Click on **Agents** in the left navigation
+4. Click on **Agents** in the left navigation
 
-5.  Select the AOAI resource:
+5. Select the AOAI resource:
    - Click **Let’s go**
 
-6.  Pick a model for your agent:
+6. Pick a model for your agent:
    - Choose `gpt-4o-mini`
    - Click **Confirm**
 
-7.  Deploy the model:
+7. Deploy the model:
    - Click **Deploy**
 
-8.  You’ll be navigated to the **My agents** screen
+8. You'll be navigated to the **My agents** screen
 
-9.  Select your agent, then:
+9. Select your agent, then:
    - In the right navigation, go to **Knowledge**
    - Click **Add**
 
@@ -174,13 +174,13 @@ By completing this lab, you will gain hands-on experience in deploying AI soluti
     outputs('Parse_JSON')?['body']?['choices'][0]['message']['content']
     ```
 
-15.  Click **Save**
+15. Click **Save**
 
-16.  Click **Test** → **Test Flow Manually**
+16. Click **Test** → **Test Flow Manually**
 
-17.  Grant permission to Outlook when prompted
+17. Grant permission to Outlook when prompted
 
-18.  Enter your query related to the PDF uploaded to your Azure AI Foundry agent
+18. Enter your query related to the PDF uploaded to your Azure AI Foundry agent
 
 19. You should receive an email with the agent’s response  
     - If not, go to **Flow Runs** to troubleshoot

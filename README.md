@@ -195,9 +195,9 @@ Now, configure the HTTP action to establish a connection to the agent that you c
     
     ![Add the API Key header value.](media/flow-http-header-api-key.png)
 
-    - **Body**:
+5. Select the **Body** field and paste the following JSON value:
 
-    ```json
+     ```json
     {
       "messages": [
         {
@@ -213,7 +213,13 @@ Now, configure the HTTP action to establish a connection to the agent that you c
       "max_tokens": 300
     }
     ```
-5. Add a new **Parse JSON** node:
+
+    1. Delete the "Input" text next to the `content` property in the JSON text that you pasted, then select the **lightning icon** that appears on the right to enter data from a previous step.
+
+    ![The lightning button is highlighted and the cursor is where "Input" used to be.](media/flow-http-body-dynamic-input-button.png)
+
+   
+6. Add a new **Parse JSON** node:
     - **Content**: Select `Body` from HTTP response.
     - **Schema**:
     
@@ -231,7 +237,7 @@ Now, configure the HTTP action to establish a connection to the agent that you c
     }
     ```
 
-6. Add a final node: **Send an Email (V2)**.
+7. Add a final node: **Send an Email (V2)**.
 
 7. Configure the email:
     - **To**: your email address

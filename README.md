@@ -7,6 +7,9 @@
   - [Exercise 2: Powerful Agentic Workflows Using Power Automate](#exercise-2-powerful-agentic-workflows-using-power-automate)
     - [Task 1: Create an Instant Cloud Flow](#task-1-create-an-instant-cloud-flow)
     - [Task 2: Configure the HTTP action](#task-2-configure-the-http-action)
+    - [Task 3: Configure the Parse JSON action](#task-3-configure-the-parse-json-action)
+    - [Task 4: Add Send an Email action](#task-4-add-send-an-email-action)
+    - [Task 5: Manually test the flow](#task-5-manually-test-the-flow)
 
 
 In this lab, you will learn how to build your first AI agent using Azure AI Foundry and integrate it with Power Automate for workflow automation. The lab is divided into two main exercises:
@@ -134,6 +137,10 @@ By completing this lab, you will gain hands-on experience in deploying AI soluti
 
 > ⚠️ *Note: Only proceed after successfully creating your Agent in Azure AI Foundry.*
 
+> [!IMPORTANT]
+> You must have a [Power Automate Premium license](https://go.microsoft.com/fwlink/?linkid=2297915) or other license that includes premium connectors to run this flow since it uses the `Http` connection. You will be able to create the flow, but you will not be able to test it.
+> When you save the flow, you will be presented with an option to sign up for a free 90-day Power Automate Premium License.
+
 ### Task 1: Create an Instant Cloud Flow
 
 1. Go to your Microsoft365 Account:  
@@ -225,10 +232,22 @@ Now, configure the HTTP action to establish a connection to the agent that you c
     3. The final Body value should include the dynamic **Input** value.
 
     ![The dynamic input value is inserted into the body.](media/flow-http-body-dynamic-input-complete.png)
-   
-6. Add a new **Parse JSON** node:
-    - **Content**: Select `Body` from HTTP response.
-    - **Schema**:
+
+### Task 3: Configure the Parse JSON action
+
+1. After configuring the HTTP action, select the **+** button underneath the HTTP action. Search for `json` and select **Parse JSON** in the search results.
+
+    ![The plus button, json search text, and Parse JSON action result are highlighted.](media/flow-search-parse-json.png)
+
+2. Select the **Parse JSON** action to open its properties. Select the **Content** field, then select the **lightning icon** to choose dynamic content from a previous step.
+
+    ![The content field and lightning icon are highlighted.](media/flow-parse-json-select-content.png)
+
+3. Select **Body** underneath the HTTP category.
+
+    ![The Body content option is highlighted.](media/flow-parse-json-content-body.png)
+
+4. Paste the following JSON into the **Schema** field:
     
     ```json
     {
@@ -244,24 +263,51 @@ Now, configure the HTTP action to establish a connection to the agent that you c
     }
     ```
 
-7. Add a final node: **Send an Email (V2)**.
+    ![The JSON schema pasted within the schema field.](media/flow-parse-json-schema.png)
 
-7. Configure the email:
-    - **To**: your email address
-    - **Subject**: your subject
-    - **Body**:
+### Task 4: Add Send an Email action
+
+1. After configuring the Parse JSON action, select the **+** button underneath the Parse JSON action. Search for `send email` and select **Send an Email (V2)** in the search results.
+
+    ![The plus button, json search text, and Send an Email (V2) action result are highlighted.](media/flow-search-send-email.png)
+
+2. Select **Sign in** to create a new connection to your Microsoft 365 email account.
+
+    ![The sign in button is highlighted.](media/flow-send-email-sign-in.png)
+
+3. In the email parameters, enter your email address in the **To** field, specify a **Subject**, then click in the **Body** field and select the *`fx`* button to enter dynamic content.
+
+    ![The to, subject, and body fields are highlighted in this screenshot.](media/flow-send-email-dynamic-content.png)
+
+4. Paste the following into the textbox, then select **Add**. This instructs PowerFlow to insert the parsed JSON output from your agent and insert it into the email body:
 
     ```text
     outputs('Parse_JSON')?['body']?['choices'][0]['message']['content']
     ```
 
-8. Select **Save**.
+    ![The dynamic content field and Add button are highlighted.](media/flow-send-email-dynamic-content-value.png)
 
-9. Select **Test** → **Test Flow Manually**.
+5. The final email form should look similar to the following:
 
-10. Grant permission to Outlook when prompted.
+    ![The completed email form is displayed.](media/flow-send-email-configured.png)
 
-11. Enter your query related to the PDF uploaded to your Azure AI Foundry agent.
+6. Select **Save**.
 
-12. You should receive an email with the agent's response.
+    ![The save button is highlighted.](media/flow-save-button.png)
+
+### Task 5: Manually test the flow
+
+5. Select **Test** next to the Save button, then select **Test** inside the dialog to test the flow manually.
+
+    ![The manual flow test dialog is displayed.](media/flow-test-manually.png)
+
+6. Grant permission to Outlook when prompted, then select **Continue** to start the test.
+
+    ![The run flow dialog is displayed with the granted Outlook connection.](media/flow-test-continue.png)
+
+7. Enter your query related to the PDF uploaded to your Azure AI Foundry agent, such as `What are the three primary differences between cloth and surgical masks?`. Select **Continue** to submit the request.
+
+    ![The test form shows the user query and the Continue button is highlighted.](media/flow-test-query.png)
+
+8. You should receive an email with the agent's response.
     - If not, go to **Flow Runs** to troubleshoot.

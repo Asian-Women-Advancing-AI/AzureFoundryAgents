@@ -20,7 +20,7 @@ By completing this lab, you will gain hands-on experience in deploying AI soluti
 
 ### Task 1: Deploy an AI Hub
 
-1. Go to [https://portal.azure.com/](https://portal.azure.com/)
+1. Go to [https://portal.azure.com/](https://portal.azure.com/).
 
 2. In the top search bar, type "AI Foundry" and select **Azure AI Foundry**.
 
@@ -33,67 +33,101 @@ By completing this lab, you will gain hands-on experience in deploying AI soluti
 4. Create a new Resource Group:
    - Use the format `<yourname>-rg`
 
+   ![The resource group name entry form is displayed.](media/create-resource-group.png)
+
 5. Add the Hub name:
    - Use the format `<yourname>-hub`
    - You can add a friendly name
    - Do not change any default values
 
-8. Click **Next: Storage** — leave all values as-is  
-9. Click **Next: Inbound Access** — leave all values as-is  
-10. Click **Next: Outbound Access** — leave all values as-is  
-11. Click **Next: Encryption** — leave all values as-is  
-12. Click **Next: Identity** — leave all values as-is  
-13. Click **Next: Tags** — skip creating tags  
-14. Click **Next: Review + Create**  
-15. Click **Create**
+   ![The completed AI Hub form is displayed.](media/new-ai-hub-form.png)
 
-16. Wait for deployment confirmation: “Your deployment is complete”
+8. Select **Next: Storage** — leave all values as-is  
+9. Select **Next: Inbound Access** — leave all values as-is  
+10. Select **Next: Outbound Access** — leave all values as-is  
+11. Select **Next: Encryption** — leave all values as-is  
+12. Select **Next: Identity** — leave all values as-is  
+13. Select **Next: Tags** — skip creating tags  
+14. Select **Next: Review + Create**  
+15. Select **Create**
 
-17. Click **Go to resource**
+    ![The AI Hub confirmation page is displayed.](media/new-ai-hub-create.png)
 
-18. Click **Launch Azure AI Foundry**
+    ![The deployment in progress page is displayed.](media/deployment-in-progress.png)
+
+16. Wait for deployment confirmation: "Your deployment is complete".
+
+17. Select **Go to resource**.
+
+    ![The deployment is completed and the Go to Resource button is highlighted.](media/deployment-completed.png)
+
+18. Select **Launch Azure AI Foundry**.
+
+    ![The Launch AI Foundry button is displayed.](media/launch-ai-foundry.png)
 
 ### Task 2: Create an Agent
 
-1. In your AI Hub space, click **New Project**
+1. In your AI Hub space, select **New Project**.
+
+    ![The New Project button is highlighted.](media/ai-foundry-new-project.png)
 
 2. In the popup:
-   - Name your project `<yourname>-project`
-   - Click **Create**
+   - Name your project `<yourname>-project`.
+   - Select **Create**.
 
-3. You will see your project dashboard
+   ![The new project form is completed.](media/ai-foundry-new-project-form.png)
 
-4. Click on **Agents** in the left navigation
+3. You will see your project dashboard.
 
-5. Select the AOAI resource:
-   - Click **Let’s go**
+    ![The AI Foundry project dashboard is displayed.](media/ai-foundry-project-dashboard.png)
+
+4. Select **Agents** in the left navigation.
+
+5. Select the Azure OpenAI resource:
+   - Select **Let’s go**.
+
+   ![The Azure OpenAI resource is selected and the Let's Go button is highlighted.](media/ai-foundry-agents-lets-go.png)
 
 6. Pick a model for your agent:
-   - Choose `gpt-4o-mini`
-   - Click **Confirm**
+   - Choose `gpt-4o-mini`.
+   - Select **Confirm**.
+
+   ![The gpt-4o-mini model is selected and the Confirm button is highlighted.](media/ai-foundry-select-model.png)
 
 7. Deploy the model:
-   - Click **Deploy**
+   - Select **Deploy**.
 
-8. You'll be navigated to the **My agents** screen
+   ![The model deployment button is highlighted.](media/ai-foundry-deploy-model.png)
+
+8. You'll be navigated to the **My agents** screen.
+
+    ![The My Agents screen is displayed.](media/ai-foundry-my-agents.png)
 
 9. Select your agent, then:
-   - In the right navigation, go to **Knowledge**
-   - Click **Add**
+   - In the right navigation, go to **Knowledge**.
+   - Select **Add**.
+
+   ![The Add button in the agent's Knowledge section is highlighted.](media/agent-add-knowledge-button.png)
 
 10. Select **Files** to upload the [cloth mask vs medical mask.pdf](cloth-mask-vs-medical-mask.pdf?raw=true) PDF.
-    - Upload and save
-    - The file is now added to the vector store
+    - Select **Upload and save**.
+    - The file is now added to the vector store.
+
+    ![The PDF is uploaded and the Upload and Save button is highlighted.](media/agent-upload-file.png)
 
 11. Test your model:
-    - Click **Try in Playground**
-    - Enter a query in the input box
+    - Select **Try in Playground**.
+    - Enter a query in the input box.
+
+    ![The Try in Playground button is highlighted.](media/agent-try-in-playground-button.png)
 
 > Examples:
 > 
 > - What documents do I have available?
 > - Breakdown the differences in efficacy between cloth and medical masks, based on the provided data.
 > - Can you create a diagram that shows these differences?
+
+![The Agent playground is displayed with chat results.](media/agent-chat-in-playground.png)
 
 ## Exercise 2: Powerful Agentic Workflows Using Power Automate
 
@@ -104,18 +138,18 @@ By completing this lab, you will gain hands-on experience in deploying AI soluti
 1. Go to your Microsoft365 Account:  
    [https://m365.cloud.microsoft/](https://m365.cloud.microsoft/)
 
-2. Click on **Power Automate** under **Apps**
+2. Select on **Power Automate** under **Apps**
 
 3. Select **Create** → **Instant Cloud Flow**
 
-4. Use a **Manual Trigger** and click **Create**
+4. Use a **Manual Trigger** and select **Create**
 
-5. Click on **Manually Trigger a Flow**  
-6. Click **Add an Input** → select **Text**  
+5. Select on **Manually Trigger a Flow**  
+6. Select **Add an Input** → select **Text**  
 7. Enter the input name: `UserQuery`  
-8. Click outside to save it
+8. Select outside to save it
 
-9. Click the `+` button below and add a new **HTTP** action
+9. Select the `+` button below and add a new **HTTP** action
 
 10. Configure the HTTP action:
     - **URL**: Copy from Azure Foundry → Models and Endpoints → gpt-4o → URL  
@@ -172,9 +206,9 @@ By completing this lab, you will gain hands-on experience in deploying AI soluti
     outputs('Parse_JSON')?['body']?['choices'][0]['message']['content']
     ```
 
-14. Click **Save**
+14. Select **Save**
 
-15. Click **Test** → **Test Flow Manually**
+15. Select **Test** → **Test Flow Manually**
 
 16. Grant permission to Outlook when prompted
 

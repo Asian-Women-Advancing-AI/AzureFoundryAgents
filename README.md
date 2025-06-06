@@ -297,17 +297,25 @@ Now, configure the HTTP action to establish a connection to the agent that you c
 
 ### Task 5: Manually test the flow
 
-5. Select **Test** next to the Save button, then select **Test** inside the dialog to test the flow manually.
+1. Select **Test** next to the Save button, then select **Test** inside the dialog to test the flow manually.
 
     ![The manual flow test dialog is displayed.](media/flow-test-manually.png)
 
-6. Grant permission to Outlook when prompted, then select **Continue** to start the test.
+2. Grant permission to Outlook when prompted, then select **Continue** to start the test.
 
     ![The run flow dialog is displayed with the granted Outlook connection.](media/flow-test-continue.png)
 
-7. Enter your query related to the PDF uploaded to your Azure AI Foundry agent, such as `What are the three primary differences between cloth and surgical masks?`. Select **Continue** to submit the request.
+3. Enter your query related to the PDF uploaded to your Azure AI Foundry agent, such as `What are the three primary differences between cloth and surgical masks?`. Select **Continue** to submit the request.
 
     ![The test form shows the user query and the Continue button is highlighted.](media/flow-test-query.png)
 
-8. You should receive an email with the agent's response.
+4. You should receive an email with the agent's response.
     - If not, go to **Flow Runs** to troubleshoot.
+
+5. If the manual test successfully ran, you should see the following:
+
+    ![The flow successfully ran.](media/flow-test-success.png)
+
+    The email you receive should look similar to the following:
+
+    ![The email containing the agent's response is displayed.](media/flow-test-email.png)

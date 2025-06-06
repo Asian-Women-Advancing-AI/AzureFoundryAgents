@@ -218,6 +218,13 @@ Now, configure the HTTP action to establish a connection to the agent that you c
 
     ![The lightning button is highlighted and the cursor is where "Input" used to be.](media/flow-http-body-dynamic-input-button.png)
 
+    2. Search for `input`, then select the **UserQuery** input that you created at the end of Task 1 above:
+
+    ![The Input item is highlighted in the search results.](media/flow-http-body-dynamic-input-result.png)
+
+    3. The final Body value should include the dynamic **Input** value.
+
+    ![The dynamic input value is inserted into the body.](media/flow-http-body-dynamic-input-complete.png)
    
 6. Add a new **Parse JSON** node:
     - **Content**: Select `Body` from HTTP response.

@@ -6,6 +6,7 @@
     - [Task 2: Create an Agent](#task-2-create-an-agent)
   - [Exercise 2: Powerful Agentic Workflows Using Power Automate](#exercise-2-powerful-agentic-workflows-using-power-automate)
     - [Task 1: Create an Instant Cloud Flow](#task-1-create-an-instant-cloud-flow)
+    - [Task 2: Configure the HTTP action](#task-2-configure-the-http-action)
 
 
 In this lab, you will learn how to build your first AI agent using Azure AI Foundry and integrate it with Power Automate for workflow automation. The lab is divided into two main exercises:
@@ -138,25 +139,61 @@ By completing this lab, you will gain hands-on experience in deploying AI soluti
 1. Go to your Microsoft365 Account:  
    [https://m365.cloud.microsoft/](https://m365.cloud.microsoft/)
 
-2. Select on **Power Automate** under **Apps**
+2. Select **Power Automate** under **Apps**.
 
-3. Select **Create** → **Instant Cloud Flow**
+    ![The Power Automate app is selected.](media/power-automate-app-selection.png)
 
-4. Use a **Manual Trigger** and select **Create**
+3. Select **Create** → **Instant Cloud Flow**.
 
-5. Select on **Manually Trigger a Flow**  
-6. Select **Add an Input** → select **Text**  
-7. Enter the input name: `UserQuery`  
-8. Select outside to save it
+    ![The Instant Cloud Flow option is selected within the Create pane.](media/create-instant-cloud-flow.png)
 
-9. Select the `+` button below and add a new **HTTP** action
+4. Use a **Manual Trigger** and select **Create**.
 
-10. Configure the HTTP action:
-    - **URL**: Copy from Azure Foundry → Models and Endpoints → gpt-4o → URL  
-    - **Method**: `POST`  
-    - **Headers**:
-      - `Content-Type`: `application/json`
-      - `api-key`: *(your Azure OpenAI key)*
+    ![The Manual Trigger option is selected and the Create button is highlighted.](media/instant-cloud-flow-manual-trigger.png)
+
+5. Select **Manually Trigger a Flow**.
+6. Select **Add an Input** → select **Text**.
+
+    ![The manual trigger is selected and the Text input option is highlighted.](media/manual-trigger-add-input.png)
+
+7. Enter the input name: `UserQuery`.
+8. Select outside to save it.
+
+    ![The input name is changed to UserQuery.](media/manual-trigger-add-input-name.png)
+
+9. Select the `+` button below the `Manually trigger a flow` step and add a new **HTTP** action.
+    - Enter "http" in the search bar to filter the list of actions.
+    - Select the **HTTP** result that has a diamond.
+
+    ![The plus button is highlighted, http is entered in the search box, and the HTTP result is highlighted.](media/flow-add-http-action.png)
+
+### Task 2: Configure the HTTP action
+
+Now, configure the HTTP action to establish a connection to the agent that you created in the previous exercise.
+
+1. Return to Azure AI Foundry, then select **Models and Endpoints** in the left-hand menu, then select the **gpt-4o-mini** model you deployed in Exercise 1.
+
+    ![The Models and Endpoints page is displayed with the model deployment.](media/ai-foundry-models-and-endpoints.png)
+
+2. Copy the **URL** value for your model deployment and paste the value in the HTTP action's **URL** field.
+
+    ![The model URL is highlight.](media/ai-foundry-model-url.png)
+
+3. Select `POST` in the **Method** dropdown list.
+
+    ![The Post method is selected.](media/flow-http-method.png)
+
+4. In **Headers**, configure the following two values:
+    
+    1. Enter `Content-Type` for the **Key** and `application/json` for the **Value**.
+
+    ![Add the Content-Type header value.](media/flow-http-header-content-type.png)
+
+    2. Add another header value with `api-key` for the **Key** and paste the key value from the `gpt-4o-mini` model deployment pane in AI Foundry.
+
+    ![The API key value in AI Foundry for the model deployment is highlighted.](media/ai-foundry-api-key.png)
+    
+    ![Add the API Key header value.](media/flow-http-header-api-key.png)
 
     - **Body**:
 
@@ -176,9 +213,8 @@ By completing this lab, you will gain hands-on experience in deploying AI soluti
       "max_tokens": 300
     }
     ```
-
-11. Add a new **Parse JSON** node:
-    - **Content**: Select `Body` from HTTP response
+5. Add a new **Parse JSON** node:
+    - **Content**: Select `Body` from HTTP response.
     - **Schema**:
     
     ```json
@@ -195,9 +231,9 @@ By completing this lab, you will gain hands-on experience in deploying AI soluti
     }
     ```
 
-12. Add a final node: **Send an Email (V2)**
+6. Add a final node: **Send an Email (V2)**.
 
-13. Configure the email:
+7. Configure the email:
     - **To**: your email address
     - **Subject**: your subject
     - **Body**:
@@ -206,13 +242,13 @@ By completing this lab, you will gain hands-on experience in deploying AI soluti
     outputs('Parse_JSON')?['body']?['choices'][0]['message']['content']
     ```
 
-14. Select **Save**
+8. Select **Save**.
 
-15. Select **Test** → **Test Flow Manually**
+9. Select **Test** → **Test Flow Manually**.
 
-16. Grant permission to Outlook when prompted
+10. Grant permission to Outlook when prompted.
 
-17. Enter your query related to the PDF uploaded to your Azure AI Foundry agent
+11. Enter your query related to the PDF uploaded to your Azure AI Foundry agent.
 
-18. You should receive an email with the agent’s response  
-    - If not, go to **Flow Runs** to troubleshoot
+12. You should receive an email with the agent's response.
+    - If not, go to **Flow Runs** to troubleshoot.
